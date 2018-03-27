@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
+import {withRouter} from "react-router-dom"
 import propTypes from "prop-types"
 import "./cartTab.less"
 
@@ -8,17 +9,20 @@ import {getCartDetail} from "../api-zzq";
 class CartTab extends Component {
     constructor(props) {
         super(props);
-        this.state = {active: ["1.0磅", "1.5磅", "2.0磅", "3.0磅", "5.0磅", "更多"], auto: true, step: 0}
+        this.state = {active: ["1.0磅", "1.5磅", "2.0磅", "3.0磅", "5.0磅", "更多"], auto: true, step: 0,shopDetail:{}}
     }
     static defaultProps = {};
     async componentDidMount(){
-        console.log(getCartDetail);
-        // let data = await getCartDetail();
-        // console.log(data);
+        let data = await getCartDetail();
+        let shopDetail = data[0].productArr.find(item=>{
+            return item.is_default==="true";
+        });
+        this.setState({shopDetail});
     }
 
     render() {
-        let {active, auto,step} = this.state;
+        let {active, auto,step,shopDetail} = this.state;
+        console.log(shopDetail);
         return <div>
             <i className="hide-button" ref="show" onClick={() => {
                 if (!auto) {
@@ -51,18 +55,23 @@ class CartTab extends Component {
                     </div>
                 </div>
                 <div className="cart-detail" ref="hide">
-                    <p>￥198.00</p>
-                    <div className="detail-info">
-                        <div className="info-img">
-                            <img src="http://static.21cake.com//themes/wap/img/1.00P-full-13.00.jpg" alt=""/>
-                        </div>
-                        <ul>
-                            <li>13x13cm</li>
-                            <li>含5套餐具</li>
-                            <li>适合3-4人分享</li>
-                            <li>最早明天 15:00配送</li>
-                        </ul>
-                    </div>
+                    {
+                        shopDetail?<div>
+                            <p>￥{shopDetail.price}</p>
+                            <div className="detail-info">
+                                <div className="info-img">
+                                    <img src={"http://localhost:8080"+shopDetail.img_url} alt=""/>
+                                </div>
+                                <ul>
+                                    <li>13x13cm</li>
+                                    <li>含5套餐具</li>
+                                    <li>适合3-4人分享</li>
+                                    <li>最早明天 15:00配送</li>
+                                </ul>
+                            </div>
+                        </div>:null
+                    }
+
                     <p>商品常规</p>
                     <ul className="detail-weight">
                         {
@@ -81,4 +90,4 @@ class CartTab extends Component {
     }
 }
 
-export default connect()(CartTab);
+export default withRouter(connect()(CartTab));
