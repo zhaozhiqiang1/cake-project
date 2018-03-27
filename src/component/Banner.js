@@ -1,17 +1,20 @@
 import React,{Component} from 'react';
 import ReactSwipe from 'react-swipe';
 import './banner.less'
+
 import PropTypes from 'prop-types';
 export default class Banner extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state={step:props.initSlide,
+        }
     }
     static defaultProps = {
         data: [],
         style: {},
-        className: '',
+        className: 'carousel',
         initSlide: 0,
-        auto: 3000,
+        auto: 3500,
         isFocus: true
     };
     static propTypes = {
@@ -22,11 +25,17 @@ export default class Banner extends Component{
         auto: PropTypes.number,
         isFocus: PropTypes.bool
     };
-    render(){
+
+    render() {
         let {data, className, initSlide, auto, isFocus} = this.props;
-        return <div className='bannerBox'>
-            <ReactSwipe
-                        className={className}
+
+        //=>没有数据的时候我们不渲染REACT-SWIPE,有数据在渲染
+        if (data.length === 0) {
+            return null;
+        }
+
+        return <div className="bannerBox">
+            <ReactSwipe className={className}
                         swipeOptions={{
                             startSlide: initSlide,
                             auto,
@@ -35,11 +44,23 @@ export default class Banner extends Component{
                                     step: index//=>记录当前展示SLIDE索引
                                 });
                             }
-                        }}
-            >
-              <div>1</div>
-              <div>h</div>
-                        </ReactSwipe>
-        </div>
+                        }}>
+                {data.map((item, index) => {
+
+
+                    return <div key={index}>
+                        <img src={`http://localhost:8080${item.picUrl}`} alt=""/>
+                    </div>;
+                })}
+            </ReactSwipe>
+
+            {isFocus ? <ul className='focus'>
+                {data.map((item, index) => {
+                    return <li key={index}
+                               className={index === this.state.step ? 'active' : ''}>
+                    </li>;
+                })}
+            </ul> : null}
+        </div>;
     }
 }

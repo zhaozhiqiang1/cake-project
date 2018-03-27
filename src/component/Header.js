@@ -8,7 +8,7 @@ import './header.less'
     render(){
         return <div className='head'>
             <a href="">
-                <img src="http://static.21cake.com/themes/wap/img/logo.png" alt=""/>
+                <img src={require('../static/image/logo.png')} alt=""/>
             </a>
 
         </div>

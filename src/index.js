@@ -11,6 +11,5 @@ import CartHeader from "./component/CartHeader";
 ReactDOM.render(<div>
     <Header/>
     <Home/>
-    <CartHeader/>
     <Nav/>
 </div>,window.root);
