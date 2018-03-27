@@ -8,11 +8,11 @@ export default class Nav extends Component{
     render(){
         return <div className='footer'>
            <ul>
-               <li><a href=""><i className='iconfont icon-home'></i>首页</a></li>
-              <li><a href=""><i className='iconfont icon-fenlei1'></i>分类</a></li>
-              <li><a href=""><i className='iconfont icon-gouwuche'></i>购物</a></li>
-              <li><a href=""><i className='iconfont icon-shequ-active1'></i>社区</a></li>
-              <li><a href=""><i className='iconfont icon-wode'></i>用户</a></li>
+               <li><a href=""><i className='iconfont icon-home'></i></a></li>
+              <li><a href=""><i className='iconfont icon-fenlei1'></i></a></li>
+              <li><a href=""><i className='iconfont icon-gouwuche'></i></a></li>
+              <li><a href=""><i className='iconfont icon-shequ-active1'></i></a></li>
+              <li><a href=""><i className='iconfont icon-wode'></i></a></li>
 
 
 
