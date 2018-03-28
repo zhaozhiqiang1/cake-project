@@ -43,6 +43,8 @@ export default class Sort extends React.Component {
             </div>
             {/* 分类的具体数据*/}
             <SortList data={data}/>
+            <SortList data={data}/>
+            <SortList data={data}/>
         </div>
     }
 }
