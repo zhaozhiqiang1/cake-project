@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Banner from "../../component/Banner";
 import './home.less'
+
 import {samll,homeDetail,textDetail} from '../../api/icon'
 import Nav from "../../component/Nav";
 import Header from "../../component/Header";
@@ -23,6 +24,8 @@ export default class Home extends Component{
 
                 <Header/>
             </section>
+
+
 <div>
     <Banner data={this.state.bannerData} auto={2000}/>
     <section className='buyer'>
@@ -48,6 +51,7 @@ export default class Home extends Component{
             <span className='more'><a href="javascript:;">更多></a></span>
         </h3>
         <ul>
+
             {
                this.state.homeData.map((item,index)=>{
                    return  <li key={index}>
@@ -71,6 +75,7 @@ export default class Home extends Component{
         <p>廿一客·活动</p>
     </section>
     <section className='home-new'>
+
         <a href="">
 
             <div className='home-second'>
@@ -109,6 +114,7 @@ export default class Home extends Component{
 
                 <Nav/>
             </section>
+
         </div>
     }
 }

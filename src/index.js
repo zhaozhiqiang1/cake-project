@@ -7,6 +7,7 @@ import './index.less'
 import Header from "./component/Header";
 import Nav from "./component/Nav";
 import './static/css/reset.min.css'
+
 ReactDOM.render(<HashRouter>
     <Switch>
 
@@ -16,3 +17,4 @@ ReactDOM.render(<HashRouter>
 
     </Switch>
 </HashRouter>,window.root);
+
