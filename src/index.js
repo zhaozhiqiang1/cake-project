@@ -7,9 +7,14 @@ import './index.less'
 import Header from "./component/Header";
 import Nav from "./component/Nav";
 import './static/css/reset.min.css'
-import CartHeader from "./component/CartHeader";
-ReactDOM.render(<div>
-    <Header/>
-    <Home/>
-    <Nav/>
-</div>,window.root);
+
+ReactDOM.render(<HashRouter>
+    <Switch>
+
+        <Route path='/' component={Home}/>
+
+
+
+    </Switch>
+</HashRouter>,window.root);
+
